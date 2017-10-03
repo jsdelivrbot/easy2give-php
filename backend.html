@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Admin</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <!-- Basic Styles -->
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/css/font-awesome.min.css">
+
+  <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/css/smartadmin-production-plugins.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/css/smartadmin-production.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/css/smartadmin-skins.min.css">
+
+  <!-- SmartAdmin RTL Support  -->
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/css/smartadmin-rtl.min.css">
+
+  <!-- GOOGLE FONT -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+  <link rel="stylesheet" href="libs/datetimepicker/jquery.datetimepicker.css">
+  <link rel="stylesheet" href="libs/angular-ui-grid/ui-grid.min.css">
+  <link rel="stylesheet" href="libs/croppic/assets/css/croppic.css">
+
+  <link rel="stylesheet" href="libs/ngDialog/css/ngDialog.min.css">
+  <link rel="stylesheet" href="libs/ngDialog/css/ngDialog-theme-default.css">
+  <link rel="stylesheet" href="stylesheets/css/invite-admin.css">
+</head>
+<body ng-app="e2gApp" class="smart-rtl fixed-header fixed-navigation fixed-page-footer">
+<div ui-view></div>
+<div system-message="showMessage"></div>
+
+<!-- parse -->
+<script type="text/javascript" src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>
+
+<!-- moment -->
+<script src="libs/moment/min/moment-with-locales.min.js"></script>
+
+<!-- jquery libs -->
+<script src="libs/jquery/dist/jquery.min.js"></script>
+<script src="libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="libs/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+<script src="libs/croppic/croppic.min.js"></script>
+<script src="libs/select2/select2.js"></script>
+
+<!-- angular libs -->
+<script src="http://cdn.jsdelivr.net/alasql/0.2/alasql.min.js"></script>
+<script src="http://alasql.org/console/xlsx.core.min.js"></script>
+<script src="libs/angular/angular.min.js"></script>
+<script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="libs/angular-ui-select2/src/select2.js"></script>
+<script src="libs/angular-messages/angular-messages.min.js"></script>
+<script src="libs/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="libs/angular-ui-grid/ui-grid.min.js"></script>
+<script src="libs/checklist-model/checklist-model.js"></script>
+<script src="libs/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="libs/ngDialog/js/ngDialog.min.js"></script>
+
+<!-- app -->
+<script src="js/admin-app.js"></script>
+
+<!-- modules -->
+<script src="js/modules/exception-override.js"></script>
+<script src="js/modules/system-message.js"></script>
+<script src="js/modules/config.js"></script>
+<script src="js/modules/date.js"></script>
+
+<!-- controllers -->
+<script src="js/controllers/admin/main-controller.js"></script>
+<script src="js/controllers/admin/event-list-controller.js"></script>
+<script src="js/controllers/admin/edit-event-controller.js"></script>
+<script src="js/controllers/admin/sms-log-controller.js"></script>
+<script src="js/controllers/admin/contact-status-log-controller.js"></script>
+<script src="js/controllers/admin/call-team-controller.js"></script>
+<script src="js/controllers/admin/call-team-guest-list-controller.js"></script>
+<script src="js/controllers/admin/error-log-controller.js"></script>
+<script src="js/controllers/admin/event-places-list-controller.js"></script>
+<script src="js/controllers/admin/edit-event-place-controller.js"></script>
+<script src="js/controllers/admin/import-provider-numbers-controller.js"></script>
+<script src="js/controllers/admin/template-controller.js"></script>
+<script src="js/controllers/admin/changes-log-controller.js"></script>
+
+<!-- services -->
+<script src="js/services/admin-auth-service.js"></script>
+<script src="js/services/event-service.js"></script>
+<script src="js/services/contact-service.js"></script>
+<script src="js/services/smslog-service.js"></script>
+<script src="js/services/event-place-service.js"></script>
+<script src="js/services/template-service.js"></script>
+<script src="js/services/ajax-service.js"></script>
+<script src="js/services/error-log-service.js"></script>
+<script src="js/services/changes-log.js"></script>
+<script src="js/services/ivr-service.js"></script>
+
+<!-- directives -->
+<script src="js/directives/admin-login-directive.js"></script>
+<script src="js/directives/import-dialog-directive.js"></script>
+<script src="js/directives/upload-photo-directive.js"></script>
+<script src="js/directives/upload-music-directive.js"></script>
+<script src="js/directives/full-screen-height-directive.js"></script>
+
+</body>
+</html>

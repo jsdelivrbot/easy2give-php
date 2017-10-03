@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# redirects
+
+RewriteRule ^e/(.*)/?$ /confirm.php?e=$1 [NC,L]
+RewriteRule ^c/(.*)/?$ /confirm.php?c=$1 [NC,L]
+RewriteRule ^change-status/?$ /confirm.php [NC,L]
+
+RewriteRule ^p/(.*)/?$ /eventPlace.php?p=$1&%{QUERY_STRING} [NC,L]
+
+RewriteCond %{REQUEST_URI} !\.mp3
+RewriteCond %{REQUEST_URI} !\.m4a
+RewriteRule ^ivr/(.*)/?$ /ivr.php?action=$1&%{QUERY_STRING} [NC,L]
+
+#RewriteCond %{QUERY_STRING} ^e=(.*)$ [NC]
+#RewriteRule (.*) http://sms.easy2give.co.il/e/%1? [R=301,L]
+
+#RewriteCond %{QUERY_STRING} ^c=(.*)$ [NC]
+#RewriteRule (.*) http://sms.easy2give.co.il/c/%1? [R=301,L]
+
+RewriteCond %{REQUEST_URI} ^/sms-status/?$
+RewriteRule (.*) /smsStatus.php [L]
+
+RewriteCond %{REQUEST_URI} ^/ajax/?$
+RewriteRule (.*) /smsNotify.php [L]
+
+RewriteCond %{REQUEST_URI} ^/admin-panel/?$
+RewriteRule (.*) /backend.html [L]
+
+</IfModule>
+
+#php_flag display_startup_errors on
+#php_flag display_errors on
+#php_flag html_errors on

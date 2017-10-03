@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Invite</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/css/bootstrap-progress-bar.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="libs/normalize-css/normalize.css">
+  <link rel="stylesheet" href="libs/datetimepicker/jquery.datetimepicker.css">
+  <link rel="stylesheet" href="libs/angular-ui-grid/ui-grid.min.css">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="libs/croppic/assets/css/croppic.css">
+  <link rel="stylesheet" href="libs/intro.js/minified/introjs.min.css">
+  <link rel="stylesheet" href="libs/intro.js/minified/introjs-rtl.min.css">
+
+  <link rel="stylesheet" href="stylesheets/css/main.css">
+</head>
+<body ng-app="e2gApp" class="rtl">
+<div class="wrapper" ng-view></div>
+<div system-message></div>
+
+<footer>
+  <div class="container">כל הזכויות שמורות Easy2Give 2015</div>
+</footer>
+
+<!-- parse -->
+<script type="text/javascript" src="//www.parsecdn.com/js/parse-1.6.7.min.js"></script>
+
+<!-- other libs -->
+<script src="libs/alasql/dist/alasql.min.js"></script>
+<script src="libs/alasql/console/xlsx.core.min.js"></script>
+
+<!-- moment -->
+<script src="libs/moment/min/moment-with-locales.min.js"></script>
+
+<!-- jquery libs -->
+<script src="libs/jquery/dist/jquery.min.js"></script>
+<script src="libs/jquery-ui/jquery-ui.min.js"></script>
+<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="libs/datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+<script src="libs/croppic/croppic.min.js"></script>
+
+<!-- angular libs -->
+<script src="libs/angular/angular.js"></script>
+<script src="libs/angular-route/angular-route.min.js"></script>
+<script src="libs/angular-messages/angular-messages.min.js"></script>
+<script src="libs/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="libs/angular-ui-grid/ui-grid.min.js"></script>
+<script src="libs/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="libs/checklist-model/checklist-model.js"></script>
+<script src="libs/intro.js/minified/intro.min.js"></script>
+<script src="libs/angular-intro.js/build/angular-intro.min.js"></script>
+<script src="libs/ui-bootstrap/ui-bootstrap-tpls-1.3.1.min.js"></script>
+
+<!-- app -->
+<script src="js/app.js"></script>
+
+<!-- modules -->
+<script src="js/modules/exception-override.js"></script>
+<script src="js/modules/system-message.js"></script>
+<script src="js/modules/config.js"></script>
+<script src="js/modules/date.js"></script>
+
+<!-- controllers -->
+<script src="js/controllers/couple-controller.js"></script>
+
+<!-- services -->
+<script src="js/services/user-service.js"></script>
+<script src="js/services/event-service.js"></script>
+<script src="js/services/contact-service.js"></script>
+<script src="js/services/smslog-service.js"></script>
+<script src="js/services/changes-log.js"></script>
+
+<!-- directives -->
+<script src="js/directives/login-directive.js"></script>
+<script src="js/directives/import-dialog-directive.js"></script>
+<script src="js/directives/upload-photo-directive.js"></script>
+
+</body>
+</html>

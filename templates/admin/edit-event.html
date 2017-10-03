@@ -1,0 +1,380 @@
+<div ng-if="user.login !== 'admin'">
+  <h2>Permission denied</h2>
+</div>
+<div ng-show="user.login === 'admin'">
+  <div class="well">
+    <a ui-sref="app.eventList" class="btn btn-labeled btn-primary">
+      <span class="btn-label">
+        <i class="fa fa-undo"></i>
+      </span>Back
+    </a>
+    <a ng-click="toggleEventDisable()" class="btn btn-labeled"
+       ng-class="{'btn-success': !eventModel.disabledAt, 'btn-danger': eventModel.disabledAt}">
+        <span class="btn-label">
+          <i ng-class="{'fa-check-square-o': !eventModel.disabledAt, 'fa-ban': eventModel.disabledAt}" class="fa"></i>
+        </span>
+        <span ng-if="!eventModel.disabledAt">Enabled</span>
+        <span ng-if="eventModel.disabledAt">Disabled</span>
+    </a>
+    <button ng-show="eventModel.objectId" ng-click="exportGuestList()" class="btn btn-labeled btn-success">
+      <span class="btn-label"><i class="fa fa-file-excel-o"></i></span>Export guest list
+    </button>
+  </div>
+  <div class="jarviswidget">
+    <header>
+      <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+      <h2>Edit event</h2>
+
+    </header>
+
+    <div>
+      <div class="widget-body no-padding">
+
+        <form name="eventForm" class="smart-form" ng-submit="saveEvent()">
+          <fieldset>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Object Id
+                  <input ng-model="eventModel.objectId" disabled>
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input"
+                       ng-class="{'state-error': eventForm.coupleId.$invalid && (eventForm.$submitted || eventForm.coupleId.$touched)}">Couple Id
+                  <input required name="coupleId" ng-model="eventModel.coupleId">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Manager Name
+                  <input ng-model="eventModel.managerName">
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input"
+                       ng-class="{'state-error': eventForm.password.$invalid && (eventForm.$submitted || eventForm.password.$touched)}">Password
+                  <input required name="password" ng-model="eventModel.password">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <div class="col col-6">
+                <div date="eventModel.date"
+                     required="true"
+                     form="eventForm"
+                     field-name="date"
+                     separated="true"
+                     label="Event"></div>
+              </div>
+              <div class="col col-6">
+                <div date="eventModel.callCenter"
+                     field-name="callCenter"
+                     label="Call center"
+                     separated="true"
+                     depends="{placeholder: 'Depends on second wave and event dates', min: {date: eventModel.secondWave, diff: {days: 2}}, max: {date: eventModel.date, diff: {days: -2}}}"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-6">
+                <div date="eventModel.firstWave"
+                     form="eventForm"
+                     field-name="firstWave"
+                     separated="true"
+                     label="First wave"
+                     depends="{placeholder: 'Depends on event date', max: {date: eventModel.date, diff: {days: -2}}}"></div>
+              </div>
+              <div class="col col-6">
+                <div date="eventModel.secondWave"
+                     form="eventForm"
+                     field-name="secondWave"
+                     separated="true"
+                     label="Second wave"
+                     depends="{placeholder: 'Depends on first wave and event dates', min: {date: eventModel.firstWave}, max: {date: eventModel.date, diff: {days: -2}}}"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col col-6">
+                <div date="eventModel.smsRemindDate"
+                     field-name="smsRemindDate"
+                     label="Sms reminder"
+                     separated="true"></div>
+              </div>
+              <div class="col col-6">
+                <div date="eventModel.ivrDate"
+                     field-name="ivrDate"
+                     label="IVR"
+                     separated="true"
+                     depends="{placeholder: 'Depends on second wave and call center dates', min: {date: eventModel.secondWave, diff: {days: 1}}, max: {date: eventModel.callCenter, diff: {days: -1}}}"></div>
+              </div>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Event name
+                  <input ng-model="eventModel.name">
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input">Provider number
+                  <input ng-model="eventModel.providerNumber">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Groom Name
+                  <input ng-model="eventModel.groomName">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Groom Email
+                  <input ng-model="eventModel.groomEmail">
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input">Groom phone
+                  <input ng-model="eventModel.groomPhone">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Bride Name
+                  <input ng-model="eventModel.brideName">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Bride Email
+                  <input ng-model="eventModel.brideEmail">
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input">Bride phone
+                  <input ng-model="eventModel.bridePhone">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">First passport id
+                  <input ng-model="eventModel.firstPassportId">
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input">Second passport id
+                  <input ng-model="eventModel.secondPassportId">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Call team limit
+                  <input type="number" ng-model="eventModel.callTeamLimit">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Location
+                  <input ng-model="eventModel.location">
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input">Location link
+                  <input ng-model="eventModel.locationLink">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Latitude
+                  <input type="number" step="any" min="-90" max="90" ng-model="eventModel.locationPoint.latitude">
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="input">Longitude
+                  <input type="number" step="any" min="-180" max="180"
+                         ng-model="eventModel.locationPoint.longitude">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="input">Maximum number of guests
+                  <input type="number" ng-model="eventModel.maxNumberOfGuests">
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <div class="checkbox">SMS Reminder
+                  <label>
+                    <input type="checkbox" ng-model="eventModel.smsRemind">
+                    <i></i>
+                  </label>
+                </div>
+              </section>
+              <section class="col col-6">
+                <div class="row">
+                  <div class="col col-12">
+                    <label class="input">SMS Reminder Status List</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-6" ng-repeat="status in statusList">
+                    <div class="checkbox">
+                      <span ng-bind="status.name"></span>
+                      <label>
+                        <input type="checkbox" checklist-model="eventModel.smsRemindStatusList"
+                               checklist-value="status.id">
+                        <i></i>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <div class="row">
+                  <section class="col col-6">
+                    <div class="checkbox">Sms allowed
+                      <label>
+                        <input type="checkbox" ng-model="eventModel.smsAllowed">
+                        <i></i>
+                      </label>
+                    </div>
+                  </section>
+                  <section class="col col-6">
+                    <div class="checkbox">IVR allowed
+                      <label>
+                        <input type="checkbox" ng-model="eventModel.ivrAllowed">
+                        <i></i>
+                      </label>
+                    </div>
+                  </section>
+                  <section class="col col-6">
+                    <div class="checkbox">Call RSVP
+                      <label>
+                        <input type="checkbox" ng-model="eventModel.callRSVP">
+                        <i></i>
+                      </label>
+                    </div>
+                  </section>
+                  <section class="col col-6">
+                    <div class="checkbox">Show banner
+                      <label>
+                        <input type="checkbox" ng-model="eventModel.showBanner">
+                        <i></i>
+                      </label>
+                    </div>
+                  </section>
+                  <section class="col col-6">
+                    <div class="checkbox">Payment done
+                      <label>
+                        <input type="checkbox" ng-model="eventModel.paymentDone">
+                        <i></i>
+                      </label>
+                    </div>
+                  </section>
+                  <section class="col col-6">
+                    <div class="checkbox">Limit waves
+                      <label>
+                        <input type="checkbox" ng-model="eventModel.isLimitWaves">
+                        <i></i>
+                      </label>
+                    </div>
+                  </section>
+                </div>
+              </section>
+              <section class="col col-6">
+                <div class="row">
+                  <section class="col col-6">
+                    <div class="checkbox">Numbers export only
+                      <label>
+                        <input type="checkbox" ng-model="eventModel.numbersExportOnly">
+                        <i></i>
+                      </label>
+                    </div>
+                  </section>
+                </div>
+              </section>
+              <section class="col col-4">
+                <div class="row">
+                  <div class="upload-record-file" upload-record
+                       prop="'ivrRecordFile'"
+                       ivr-record-file="ivrRecordFile"
+                       ivr-record-obj="ivrRecordObj"
+                       parse-object="eventObject"></div>
+                </div>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="textarea">First wave sms text
+                  <textarea ng-model="eventModel.firstWaveSmsText"></textarea>
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="textarea">Second wave sms text
+                  <textarea ng-model="eventModel.secondWaveSmsText"></textarea>
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <label class="textarea">Couple alert text
+                  <textarea ng-model="eventModel.coupleAlertText"></textarea>
+                </label>
+              </section>
+              <section class="col col-6">
+                <label class="textarea">SMS Reminder text
+                  <textarea ng-model="eventModel.smsRemindText"></textarea>
+                </label>
+              </section>
+            </div>
+            <div class="row">
+              <section class="col col-6">
+                <div upload-photo
+                     label="'Image'"
+                     prop="'image'"
+                     parse-object="eventObject"
+                     resize-max-width="370">
+                </div>
+              </section>
+              <section class="col col-6">
+                <label class="input">Event place
+                  <select class="select2"
+                          ui-select2
+                          ng-model="eventModel.eventPlace.objectId"
+                          data-placeholder="Choose event place">
+                    <option value=""></option>
+                    <option ng-repeat="eventPlace in eventPlacesList track by $index"
+                            ng-selected="eventPlace.objectId == eventModel.eventPlace.objectId"
+                            value="{{eventPlace.objectId}}"
+                            ng-bind="eventPlace.venueName"></option>
+                  </select>
+                </label>
+              </section>
+            </div>
+          </fieldset>
+
+          <footer>
+            <button type="submit" class="btn btn-primary" ng-click="eventForm.$submitted = true">
+              Submit
+            </button>
+            <a ui-sref="app.eventList" type="button" class="btn btn-default">
+              Back
+            </a>
+          </footer>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<div id="import-dialog" title="יבוא מוזמנים לטבלה">
+  <div class="text text-center">
+    <span>לפני יבוא, יש תחילה להוריד את</span>
+    <span>תבנית הקובץ ולפתוח אותו</span>
+    <span>באקסל.</span>
+  </div>
+  <div class="grid-bottom-buttons float-none text-center">
+    <button type="button" class="float-none" ng-click="exportExample()">הורד תבנית
+      לקובץ
+    </button>
+  </div>
+  <div class="text text-center">
+    <span>לאחר עריכה, יש לפתוח חלון</span>
+    <span>זה שנית וללחוץ על יבוא אנשי</span>
+    <span>קשר.</span>
+  </div>
+  <div class="grid-bottom-buttons float-none text-center">
+    <label type="button" class="float-none">
+      יבוא
+      <input id="import-upload" type="file" accept=".xlsx" ngf-select ngf-change="loadFile($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)">
+    </label>
+  </div>
+  <div class="text text-center text-sm">
+    <span>עובד הכי טוב עם גוגל כרום.</span>
+  </div>
+</div>

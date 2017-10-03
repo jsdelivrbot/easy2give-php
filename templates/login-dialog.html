@@ -1,0 +1,32 @@
+<div id="dialog-form" title="כניסה למערכת אישורי הגעה">
+  <form name="formLogin" novalidate>
+    <div class="login-error">
+      <div>אחד או יותר מהנתונים שהזנתם אינם נכונים</div>
+    </div>
+    <div class="input-group">
+      <div ng-messages="formLogin.name.$error" ng-if="loginForm.submitted">
+        <div ng-message="required" class="error-message">שם משתמש הינו שדה חובה</div>
+      </div>
+      <input placeholder="שם משתמש" class="text ui-widget-content ui-corner-all" id="name" name="name" ng-model="loginForm.name" type="text"
+             required>
+    </div>
+
+    <div class="input-group">
+      <div ng-messages="formLogin.coupleId.$error" ng-if="loginForm.submitted">
+        <div ng-message="required" class="error-message">מספר אירוע הינו שדה חובה</div>
+      </div>
+      <input placeholder="מספר אירוע" class="text ui-widget-content ui-corner-all" id="coupleId" name="coupleId" ng-model="loginForm.coupleId"
+             required type="text">
+    </div>
+
+    <div class="input-group">
+      <div ng-messages="formLogin.password.$error" ng-if="loginForm.submitted">
+        <div ng-message="required" class="error-message">סיסמה הינו שדה חובה</div>
+      </div>
+      <input placeholder="סיסמה" class="text ui-widget-content ui-corner-all" id="password" name="password" ng-model="loginForm.password"
+             required type="password">
+    </div>
+    <input style="position:absolute; top:-1000px" tabindex="-1" type="submit">
+
+  </form>
+</div>

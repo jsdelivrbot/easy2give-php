@@ -1,0 +1,39 @@
+<div class="well">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="pull-left">
+        <a ui-sref="app.eventList" class="btn btn-labeled btn-primary">
+      <span class="btn-label">
+        <i class="fa fa-undo"></i>
+      </span>Back
+        </a>
+        <button ng-click="exportSmsLog()" class="btn btn-labeled btn-success"><span class="btn-label"><i
+            class="fa fa-file-excel-o"></i></span>Export
+        </button>
+      </div>
+
+      <div ng-if="smsNumber" class="pull-right">
+        <h2>
+          <span>גל ראשון
+            (
+             <span class="text-primary">רשומות - <strong ng-bind="smsNumber.firstWave.totalRows"></strong>;</span>
+             <span class="text-warning">נשלח - <strong ng-bind="smsNumber.firstWave.sentToService"></strong>;</span>
+             <span class="text-danger">שגיאות - <strong ng-bind="smsNumber.firstWave.errors"></strong>;</span>
+             <span class="text-success">הגיע - <strong ng-bind="smsNumber.firstWave.delivered"></strong></span>
+            );
+          </span>
+
+          <span>גל שני
+            (
+             <span class="text-primary">רשומות - <strong ng-bind="smsNumber.secondWave.totalRows"></strong>;</span>
+             <span class="text-warning">נשלח - <strong ng-bind="smsNumber.secondWave.sentToService"></strong>;</span>
+             <span class="text-danger">שגיאות - <strong ng-bind="smsNumber.secondWave.errors"></strong>;</span>
+             <span class="text-success">הגיע - <strong ng-bind="smsNumber.secondWave.delivered"></strong></span>
+            );
+          </span>
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+<div ui-grid="gridOptions" ui-grid-auto-resize full-screen-height class="grid" dir="rtl"></div>

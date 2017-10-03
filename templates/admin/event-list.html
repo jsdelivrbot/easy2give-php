@@ -1,0 +1,11 @@
+<div ng-if="user.login !== 'admin'">
+  <h2>Permission denied</h2>
+</div>
+<div ng-if="user.login === 'admin'">
+  <div class="well">
+    <button ng-click="exportEventList()" class="btn btn-labeled btn-success"><span class="btn-label"><i
+        class="fa fa-file-excel-o"></i></span>Export
+    </button>
+  </div>
+  <div ui-grid="gridOptions" ui-grid-auto-resize full-screen-height class="grid" dir="rtl"></div>
+</div>

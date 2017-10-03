@@ -1,0 +1,83 @@
+<aside id="left-panel">
+
+  <!-- User info -->
+  <div class="login-info">
+    <span>
+      <a href="">
+        <i class="fa fa-lg fa-fw fa-user"></i>
+        <span ng-bind="user.login"></span>
+        <span ng-if="!user">Logged out</span>
+      </a>
+    </span>
+  </div>
+  <!-- end user info -->
+
+  <nav>
+    <ul>
+      <li ui-sref-active="active" ng-if="user.login === 'admin'">
+        <a ui-sref="app.eventList">
+          <i class="fa fa-lg fa-fw fa-group"></i>
+          <span class="menu-item-parent">Events</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="user.login === 'admin'">
+        <a ui-sref="app.numbersExportOnlyEventList">
+          <i class="fa fa-lg fa-fw fa-group"></i>
+          <span class="menu-item-parent">Numbers export only</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="user.login === 'admin'">
+        <a ui-sref="app.editEvent">
+          <i class="fa fa-lg fa-fw fa-plus"></i>
+          <span class="menu-item-parent">Add new event</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="user.login === 'admin'">
+        <a ui-sref="app.eventPlacesList">
+          <i class="fa fa-lg fa-fw fa-map-marker"></i>
+          <span class="menu-item-parent">Event places</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="user.login === 'admin'">
+        <a ui-sref="app.editEventPlace">
+          <i class="fa fa-lg fa-fw fa-plus"></i>
+          <span class="menu-item-parent">Add new event place</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="user.login === 'admin'">
+        <a ui-sref="app.importProviderNumbers">
+          <i class="fa fa-lg fa-fw fa-list-ol"></i>
+          <span class="menu-item-parent">Import provider numbers</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="user.login === 'admin'">
+        <a ui-sref="app.errorLog">
+          <i class="fa fa-lg fa-fw fa-warning"></i>
+          <span class="menu-item-parent">Error log</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.changesLog">
+          <i class="fa fa-lg fa-fw fa-warning"></i>
+          <span class="menu-item-parent">Changes log</span>
+        </a>
+      </li>
+      <li ui-sref-active="active" ng-if="user.login === 'admin'">
+        <a ui-sref="app.template">
+          <i class="fa fa-lg fa-fw fa-file-text-o"></i>
+          <span class="menu-item-parent">Templates</span>
+        </a>
+      </li>
+      <li ui-sref-active="active">
+        <a ui-sref="app.callTeam">
+          <i class="fa fa-lg fa-fw fa-table"></i>
+          <span class="menu-item-parent">Call team table</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <span class="minifyme" data-action="minifyMenu">
+    <i class="fa fa-arrow-circle-left hit"></i>
+  </span>
+
+</aside>

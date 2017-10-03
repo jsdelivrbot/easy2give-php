@@ -1,0 +1,41 @@
+<div ng-if="user">
+  <div class="well">
+    <div class="row">
+      <div class="col-xs-3">
+        <a ui-sref="app.callTeam" class="btn btn-labeled btn-primary">
+          <span class="btn-label"><i class="fa fa-undo"></i></span>
+          Back
+        </a>
+        <button ng-click="exportGuestList()" class="btn btn-labeled btn-success"><span class="btn-label"><i
+            class="fa fa-file-excel-o"></i></span>Export
+        </button>
+      </div>
+      <div class="col-xs-7">
+        <h2 class="text-center">
+          <span ng-if="eventModel.brideName || eventModel.groomName">
+            <strong>שם אירוע:</strong> {{eventModel.brideName}} ו-{{eventModel.groomName}},
+          </span>
+
+          <span ng-if="eventModel.location">
+            <strong>אולם:</strong> {{eventModel.location}},
+          </span>
+
+          <span ng-if="eventModel.date">
+            <strong>תאריך:</strong> {{dateService.getDate(dateService.parseDate(eventModel.date))}}
+          </span>
+        </h2>
+      </div>
+      <div class="col-xs-2 text-right">
+        <a ng-click="toggleCallCenterDone()" class="btn btn-labeled"
+           ng-class="{'btn-success': eventModel.callCenterDone, 'btn-info': !eventModel.callCenterDone}">
+          <span class="btn-label">
+            <i ng-class="{'fa-check-square-o': eventModel.callCenterDone, 'fa-square-o': !eventModel.callCenterDone}" class="fa"></i>
+          </span>
+          <span ng-if="eventModel.callCenterDone">Done</span>
+          <span ng-if="!eventModel.callCenterDone">Not done</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div ui-grid="gridOptions" ui-grid-edit ui-grid-auto-resize full-screen-height class="grid" dir="rtl"></div>
+</div>

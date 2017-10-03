@@ -1,0 +1,28 @@
+<div id="dialog-form" title="כניסה למערכת ניהול">
+  <form name="formLogin" class="smart-form" novalidate>
+    <div class="login-error text-danger">
+      <div>אחד או יותר מהנתונים שהזנתם אינם נכונים</div>
+    </div>
+    <div class="login-input-group">
+      <label class="input">
+        <input placeholder="Login" class="text ui-widget-content ui-corner-all" id="login" name="login" ng-model="loginForm.login" type="text"
+               required>
+      </label>
+      <div ng-messages="formLogin.login.$error" ng-if="loginForm.submitted">
+        <div ng-message="required" class="text-danger">שם משתמש הינו שדה חובה</div>
+      </div>
+    </div>
+
+    <div class="login-input-group">
+      <label class="input">
+        <input placeholder="Password" class="text ui-widget-content ui-corner-all" id="password" name="password" ng-model="loginForm.password"
+               required type="password">
+      </label>
+      <div ng-messages="formLogin.password.$error" ng-if="loginForm.submitted">
+        <div ng-message="required" class="text-danger">סיסמה הינו שדה חובה</div>
+      </div>
+    </div>
+    <input style="position:absolute; top:-1000px" tabindex="-1" type="submit">
+
+  </form>
+</div>

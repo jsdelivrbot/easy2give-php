@@ -1,0 +1,558 @@
+@import base.sass
+@font-face
+	font-family: 'EncodeSans'
+	font-weight: normal
+	src: url(/stylesheets/fonts/encode-sans/EncodeSansCondensed-Regular.ttf)
+
+@font-face
+	font-family: 'EncodeSans'
+	font-weight: bold
+	src: url(/stylesheets/fonts/encode-sans/EncodeSansCondensed-Bold.ttf)
+
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css)
+
+html
+	height: 100%
+
+body
+	height: 100%
+	direction: ltr
+	padding: 0
+	margin: 0
+	background: #fff
+	margin: 0 auto
+	font-family: 'Open Sans Hebrew'
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+
+	footer
+		flex: 0 0 auto
+
+	.wrapper
+		flex: 1 0 auto
+
+	*
+		box-sizing: border-box
+
+body, button, input, select, textarea
+	font-size: 16px
+	line-height: 1.5
+	border: none
+
+button
+	border-radius: 3px
+
+.container
+	width: 100%
+	max-width: 1080px
+	margin: 0 auto
+
+body
+	display: block
+
+.rtl
+	direction: rtl
+
+.container
+	height: 100%
+	width: 100%
+	max-width: 378px
+	padding: 0 14px
+
+	@include respond-to(medium)
+		max-width: 540px
+		padding: 0 29px
+
+.wrapper
+	position: relative
+
+header
+	background: $mainGray
+		height: 57px
+	position: relative
+
+	@include respond-to(medium)
+		height: 85px
+
+.logo
+	display: flex
+	align-items: center
+	width: 45%
+	margin: 0 auto
+	text-align: center
+	height: 100%
+
+	img
+		margin: 2% auto
+		width: 100%
+
+h2
+	color: $mainGold
+	text-align: center
+	font-weight: bold
+	font-size: 19px
+	line-height: 28px
+	margin: 7px auto
+
+	@include respond-to(medium)
+		font-size: 28px
+		margin: 11px auto
+		line-height: 40px
+
+	&.question
+		margin: 5px auto
+
+		@include respond-to(medium)
+			margin: 9px auto
+
+	&.title
+		margin: 12px auto
+
+		@include respond-to(medium)
+			margin: 17px auto
+
+		span
+			font-weight: bold
+
+.info > a
+	display: block
+	text-decoration: none
+	color: $mainGray
+	background: #fff
+	box-shadow: 0 1px 2px #bbb
+	font-weight: bold
+	white-space: nowrap
+	text-overflow: ellipsis
+	overflow: hidden
+	padding: 13px 12px 13px 76px
+	margin: 16px auto
+	height: 49px
+	font-size: 16px
+	border-radius: 2px
+
+	@include respond-to(medium)
+		padding: 19px 17px 19px 107px
+		margin: 15px auto
+		height: 73px
+		font-size: 24px
+		border-radius: 3px
+
+	&.place
+		position: relative
+
+		&::after
+			content: '0'
+			font-size: 0
+			display: block
+			position: absolute
+			top: 50%
+			background: url(/stylesheets/img/placeholder-icons.png) no-repeat
+			background-position: 0 -1px
+			background-size: 64px 80px
+			width: 64px
+			height: 33px
+			right: 7px
+			margin-top: -17px
+
+			.rtl &
+				left: 7px
+				right: auto
+
+			@include respond-to(medium)
+				width: 97px
+				height: 50px
+				right: 10px
+				margin-top: -25px
+				background-size: 97px 120px
+				background-position: 0 -2px
+
+				.rtl &
+					left: 10px
+					right: auto
+
+	&.date
+		position: relative
+
+		&::after
+			content: '0'
+			font-size: 0
+			display: block
+			position: absolute
+			top: 50%
+			background: url(/stylesheets/img/placeholder-icons.png) no-repeat
+			background-position: 0 -47px
+			background-size: 64px 80px
+			width: 64px
+			height: 33px
+			right: 7px
+			margin-top: -17px
+
+			.rtl &
+				left: 7px
+				right: auto
+
+			@include respond-to(medium)
+				width: 97px
+				height: 50px
+				right: 10px
+				margin-top: -25px
+				background-size: 97px 120px
+				background-position: 0 -71px
+
+				.rtl &
+					left: 10px
+					right: auto
+
+	&::before
+		content: attr(data-content)
+		position: absolute
+		text-align: center
+		color: $mainGray
+		width: 64px
+		right: 7px
+		font-size: 8px
+		bottom: 8px
+
+		@include respond-to(medium)
+			width: 97px
+			right: 11px
+			font-size: 11px
+			bottom: 11px
+
+		.rtl &
+			content: attr(data-content-rtl)
+			left: 7px
+			right: auto
+
+			@include respond-to(medium)
+				left: 11px
+				right: auto
+
+.photo
+	margin: 21px auto 0
+	border-radius: 5px
+
+	@include respond-to(medium)
+		margin: 32px auto 0
+
+	img
+		width: 100%
+		max-width: 100%
+			border-radius: 2px
+
+		@include respond-to(medium)
+			border-radius: 3px
+
+.btn-group
+	margin: 13px auto
+
+	@include respond-to(medium)
+		margin: 19px auto
+
+	button
+		font-family: 'EncodeSans'
+		float: left
+		display: block
+		margin: 0
+		border: none
+		box-shadow: 0 0 2px #777
+		background: $mainGold !important
+		width: 33.33%
+		font-weight: bold
+		position: relative
+		color: #fff
+		cursor: pointer
+		border-radius: 2px
+		padding: 36px 0 10px
+		font-size: 13px
+
+		@include respond-to(medium)
+			border-radius: 3px
+
+		.rtl &
+			float: right
+
+		&::before
+			content: '0'
+			font-size: 0
+			display: block
+			position: absolute
+			left: 50%
+			background: url(/stylesheets/img/icons-white.png) no-repeat
+			width: 27px
+			height: 33px
+			top: 3px
+			margin-left: -13px
+			background-size: 240px 224px
+
+			.rtl &
+				right: 50%
+				margin-right: -13px
+				left: auto
+				margin-left: auto
+
+			@include respond-to(medium)
+				width: 40px
+				height: 50px
+				top: 5px
+				margin-left: -20px
+				background-size: 360px 336px
+
+				.rtl &
+					margin-right: -20px
+
+		&.active.confirmed
+			background-color: #8bee94 !important
+
+		&.active.maybe
+			background-color: #f4c900 !important
+
+		&.active.not-coming
+			background-color: #e95862 !important
+
+		&.confirmed::before
+			background-position: -41px -196px
+
+			@include respond-to(medium)
+				background-position: -61px -295px
+
+		&.maybe::before
+			background-position: -67px -196px
+
+			@include respond-to(medium)
+				background-position: -101px -295px
+
+		&.not-coming::before
+			background-position: -117px -196px
+
+			@include respond-to(medium)
+				background-position: -176px -295px
+
+		@include respond-to(medium)
+			padding: 54px 0 15px
+			font-size: 20px
+
+a.attention
+	display: block
+	text-decoration: none
+	font-size: 40px
+	margin: 18px auto
+	font-weight: bold
+	border-radius: 10px
+	position: relative
+
+	@include respond-to(medium)
+		margin: 34px auto
+
+	img
+		width: 100%
+
+.finish
+	display: none
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	background: $mainLightGray
+	z-index: 100
+
+	.logo
+		width: 87%
+		height: auto
+		margin: 10% auto 0
+		position: relative
+
+		&::before, &::after
+			content: '0'
+			font-size: 0
+			height: 1px
+			width: 90%
+			margin-left: -45%
+			background: #555658
+			position: absolute
+			left: 50%
+
+		&::before
+			top: -13%
+
+		&::after
+			bottom: -13%
+
+	h2
+		margin: 24% auto 0
+		font-size: 21px
+		color: #555658
+		font-weight: normal
+		font-family: 'EncodeSans'
+
+		@include respond-to(medium)
+			font-size: 32px
+
+		span
+			display: block
+			font-weight: bold
+
+	.attention
+		width: 80%
+		margin-top: 20%
+
+.clearfix:after
+	content: ''
+	display: table
+	clear: both
+
+.phone-wrapper
+	width: 441px
+	height: 893px
+	margin: 20px auto
+	background: url(/stylesheets/img/phone.png) center top no-repeat
+	padding: 132px 33px 110px 30px
+
+	@include respond-to(medium)
+		width: auto
+		min-height: 100%
+		height: auto
+		margin: auto
+		background: $mainLightGray
+		padding: 0
+
+	@include respond-to(small)
+		width: auto
+		min-height: 100%
+		height: auto
+		margin: auto
+		background: $mainLightGray
+		padding: 0
+
+	.inner
+		width: 100%
+		height: 100%
+		overflow: hidden
+		position: relative
+		background: $mainLightGray
+		cursor: grab
+		cursor: -webkit-grab
+
+		&:active
+			cursor: grabbing
+			cursor: -webkit-grabbing
+
+.main-wrapper
+	height: 100%
+	overflow: auto
+	background: url(/stylesheets/img/confirm-bg.png) center top/cover no-repeat
+
+	@include respond-to(medium)
+		background: transparent
+
+	@include respond-to(small)
+		background: transparent
+
+	> h1
+		color: #fff
+		text-align: center
+		background: $mainGold
+		margin: 0
+		font-weight: normal
+		font-size: 34px
+
+		@include respond-to(medium)
+			display: none
+
+		@include respond-to(small)
+			display: none
+
+.venue-info
+	display: flex
+	padding: 16px 8px
+	font-size: 22px
+	line-height: 28px
+	color: $mainGray
+
+	p
+		margin: 0
+
+	.description
+		flex: 1 1 68%
+
+	.name
+		font-weight: bold
+
+	.venue-logo
+		flex: 1 1 27%
+		background: center top/cover no-repeat
+		border: 1px solid $mainGray
+
+.title
+	color: $mainGold
+	text-align: center
+	margin: 2px auto
+	font-size: 20px
+
+.slick-btn
+	padding: 0
+	width: 15px
+	height: 22px
+	position: absolute
+	top: 50%
+	margin-top: -11px
+	background: url(/stylesheets/img/arrows.png) center/cover transparent no-repeat
+
+	&.prev-btn
+		right: 8px
+		background-position: top right
+
+	&.next-btn
+		left: 8px
+		background-position: top left
+
+
+.app-list
+	list-style: none
+	background: #fff
+	border-radius: 5px
+	padding: 7px 50px
+	margin: 8px
+
+	&[data-slides-to-show="4"]
+		padding: 7px 28px
+
+	li > a
+		display: block
+		margin: 0 auto
+		width: 54px
+		height: 54px
+		background: url(/stylesheets/img/lp-icons.png) no-repeat
+		background-size: auto 100%
+
+	.waze
+		background-position: -396px 0
+
+	.gmaps
+		background-position: -328px 0
+
+	.igo
+		background-position: -263px 0
+
+	.mail
+		background-position: -66px 0
+
+	.twitter
+		background-position: -132px 0
+
+	.facebook
+		background-position: -198px 0
+
+#map
+	margin: 13px -14px
+	width: auto
+	min-height: 286px
+	background: center top/cover no-repeat
+
+.slick-flex .slick-track
+	display: flex
+	justify-content: space-between
+	align-items: center
+	width: 100% !important

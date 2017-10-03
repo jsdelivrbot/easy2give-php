@@ -1,0 +1,44 @@
+<div ng-if="user.login !== 'admin'">
+  <h2>Permission denied</h2>
+</div>
+<div ng-if="user.login === 'admin'">
+  <div class="well">
+    <div>
+      <button type="file"
+              accept=".csv"
+              ngf-select
+              ngf-change="loadFile($files, $file, $newFiles, $duplicateFiles, $invalidFiles, $event)"
+              class="btn btn-labeled btn-info"><span class="btn-label"><i
+          class="fa fa-file-text-o"></i></span>Import
+      </button>
+      <hr>
+    </div>
+    <h2>Successfully imported files <span class="text-success" ng-bind="importedFiles"></span></h2>
+    <h2>Matches found <span class="text-success" ng-bind="matchesFound"></span></h2>
+    <h2>Checked <span class="text-success" ng-bind="checked"></span> of <span class="text-primary" ng-bind="all"></span></h2>
+    <h2 ng-show="all && checked !== all">Waiting...</h2>
+
+    <hr>
+    <h2 ng-if="duplicates.length !== 0">Passport id duplicates in file (passportId - provider numbers):</h2>
+    <ol>
+      <li ng-repeat="(key, duplicate) in duplicates">
+        {{key}} - <span ng-repeat="providerNumber in duplicate.providerNumbers">{{providerNumber}} <span ng-if="!$last">, </span> <span ng-if="$last">;</span></span>
+      </li>
+    </ol>
+
+    <hr>
+    <h2 ng-if="parseDuplicates.length !== 0">Events with same passport id in system:</h2>
+    <ol>
+      <li ng-repeat="duplicateArr in parseDuplicates">
+        <span ng-repeat="eventObj in duplicateArr">{{eventObj.id}} <span ng-if="!$last">, </span> <span ng-if="$last">;</span></span>
+      </li>
+    </ol>
+    <!--<div ng-if="coupleIds.length > 0">-->
+      <!--<hr>-->
+      <!--<h2>Couple ids</h2>-->
+      <!--<ol class="font-lg">-->
+        <!--<li ng-repeat="id in coupleIds track by $index" ng-bind="id"></li>-->
+      <!--</ol>-->
+    <!--</div>-->
+  </div>
+</div>

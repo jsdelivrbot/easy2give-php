@@ -1,0 +1,6 @@
+<div ng-if="!user">
+  <h2>Permission denied</h2>
+</div>
+<div ng-if="user">
+  <div ui-grid="gridOptions" ui-grid-auto-resize full-screen-height class="grid" dir="rtl"></div>
+</div>

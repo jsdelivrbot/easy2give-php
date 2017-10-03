@@ -1,0 +1,32 @@
+{
+  "name": "croppic",
+  "homepage": "http://www.croppic.net",
+  "authors": [
+    "Mat Steinlin <mat@steinlinconsulting.com> (http://www.steinlincosnulting.com)",
+    "Ognjen Božičković"
+  ],
+  "description": "The image cropping jquery plugin that will satisfy your needs and much more",
+  "license": "MIT",
+  "main": [
+    "croppic.min.js",
+    "assets/css/croppic.css"
+  ],
+  "keywords": [
+    "crop",
+    "croppic"
+  ],
+  "dependencies": {
+    "jquery-mousewheel": "~3.1.12",
+    "jquery": ">= 2.1.3"
+  },
+  "_release": "1c3162febd",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "1c3162febd667a8b81fdcb5e285b4abf38fa005c"
+  },
+  "_source": "git://github.com/styoe/croppic.git",
+  "_target": "*",
+  "_originalSource": "croppic",
+  "_direct": true
+}

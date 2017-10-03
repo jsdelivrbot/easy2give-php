@@ -1,0 +1,47 @@
+<div ng-if="user.login !== 'admin'">
+  <h2>Permission denied</h2>
+</div>
+<div ng-if="user.login === 'admin'">
+  <div class="well">
+    <a ui-sref="app.eventList" class="btn btn-labeled btn-primary">
+      <span class="btn-label">
+        <i class="fa fa-undo"></i>
+      </span>Back
+    </a>
+  </div>
+  <div class="jarviswidget">
+    <header>
+      <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+      <h2>Edit Templates</h2>
+
+    </header>
+
+    <div>
+      <div class="widget-body no-padding">
+
+        <form class="smart-form">
+          <fieldset>
+            <div class="row">
+              <section class="col col-6" ng-repeat="template in templateList track by template.objectId">
+                <label class="textarea">{{ template.title }}
+                    <textarea ng-model="template.text" name="{{ template.name }}"></textarea>
+                </label>
+              </section>
+            </div>
+          </fieldset>
+
+          <footer>
+            <button type="submit" class="btn btn-primary" ng-click="save()">
+              Submit
+            </button>
+            <a ui-sref="app.eventList" type="button" class="btn btn-default">
+              Back
+            </a>
+          </footer>
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+</div>

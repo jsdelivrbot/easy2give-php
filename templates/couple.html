@@ -1,0 +1,112 @@
+<div login></div>
+
+<div import-dialog></div>
+
+<div class="invite-page" ng-intro-options="introOptions" ng-intro-method="showIntro" ng-intro-autostart="false">
+  <header class="header" ng-if="eventModel.brideName">
+    רשימת מוזמנים לחתונה של <span ng-bind="eventModel.brideName"></span> ו-<span ng-bind="eventModel.groomName"></span>,
+    בתאריך <span>{{dateService.getDate(dateService.parseDate(eventModel.date))}}</span>
+  </header>
+
+  <div class="container clearfix">
+    <div class="settings">
+
+      <div class="not-allowed" ng-if="!eventModel.smsAllowed">
+        <div class="desc">
+          <p><span>אופציה זו רלוונטית</span><span>לחבילת וידואי הגעה</span><span>אשר כרוכה בתשלום.</span></p>
+
+          <p><span>לרכישת החבילה</span><span>אנא צור קשר עם</span><span>שירות הלקוחות בטלפון</span><span class="lg">5055*</span>
+            <span>או במייל <a href="mailto:info@easy2give.co.il​">info@easy2give.co.il​</a>.</span></p>
+          <a href="#/" class="logo"></a>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>
+          תצוגה מקדימה
+          <div class="sms-placeholder" id="sms-placeholder">
+            <div><span ng-bind="waveSmsText"></span><a ng-href="{{waveSmsLink}}" ng-bind="waveSmsLink"
+                                                       target="_blank"></a></div>
+          </div>
+        </label>
+      </div>
+
+      <div class="input-group">
+        <div upload-photo
+             label="'העלו תמונה'"
+             prop="'image'"
+             parse-object="eventObject"
+             resize-max-width="370"></div>
+      </div>
+
+      <div class="input-group" id="wave-selector">
+        <label>בחרו תאריכי שליחת הודעות</label>
+        <div date="eventModel.firstWave"
+             couple-page="true"
+             field-name="firstWave"
+             label="גל ראשון:"
+             ng-click="showExplainBlockedWaves(waveDone(eventStatusListReverse['First wave done']))"
+             disabled-forever="waveDone(eventStatusListReverse['First wave done'])"
+             depends="{max: {date: eventModel.date, diff: {days: -1}}}"></div>
+
+        <div date="eventModel.secondWave"
+             couple-page="true"
+             field-name="secondWave"
+             label="גל שני:"
+             ng-click="showExplainBlockedWaves(waveDone(eventStatusListReverse['Second wave done']))"
+             disabled-forever="waveDone(eventStatusListReverse['Second wave done'])"
+             depends="{min: {date: eventModel.firstWave}, max: {date: eventModel.date, diff: {days: -1}}}"></div>
+      </div>
+
+      <div class="input-group" id="save-block">
+        <button type="button" ng-click="saveEvent()" class="save">שמור</button>
+      </div>
+
+    </div>
+
+    <div class="guest-list-table-wrapper">
+      <header>
+        רשימת אורחים
+      </header>
+
+      <div class="statistics clearfix" id="statistics">
+        <div class="cell confirmed"
+             ng-class="{'active': filterByStatusValue || filterByStatusValue === 0, 'filtered': filterByStatusValue !== statusList.confirmed}"
+             ng-click="filterByStatus(statusList.confirmed)">
+          אושר
+          <span ng-bind="getStatusCount(statusList.confirmed)"></span>
+        </div>
+        <div class="cell maybe"
+             ng-class="{'active': filterByStatusValue || filterByStatusValue === 0, 'filtered': filterByStatusValue !== statusList.maybe}"
+             ng-click="filterByStatus(statusList.maybe)">
+          אולי
+          <span ng-bind="getStatusCount(statusList.maybe)"></span>
+        </div>
+        <div class="cell not-coming"
+             ng-class="{'active': filterByStatusValue || filterByStatusValue === 0, 'filtered': filterByStatusValue !== statusList.notComing}"
+             ng-click="filterByStatus(statusList.notComing)">
+          לא מגיע
+          <span ng-bind="getStatusCount(statusList.notComing)"></span>
+        </div>
+        <div class="cell not-responded"
+             ng-class="{'active': filterByStatusValue || filterByStatusValue === 0, 'filtered': filterByStatusValue !== statusList.notResponded}"
+             ng-click="filterByStatus(statusList.notResponded)">
+          לא ענה
+          <span ng-bind="getStatusCount(statusList.notResponded)"></span>
+        </div>
+      </div>
+
+
+      <div ui-grid="gridOptions" ui-if="gridOptions.data.length>0" dir="{{dir}}" ui-grid-edit ui-grid-cellNav
+           ui-grid-exporter ui-grid-auto-resize class="grid" style="{{tableHeight}}"></div>
+      <div class="input-group margin-top-0">
+        <button type="button" class="add-new-line" name="addNewLine" ng-click="addNewLine()">+ הוסף שורה חדשה</button>
+      </div>
+      <div class="grid-bottom-buttons" id="bottom-buttons-block">
+        <button ng-click="openImportDialog()">יבוא</button>
+        <button type="button" name="exportCsv" ng-click="confirmExport()">יצוא</button>
+        <button type="button" name="deleteContactList" ng-click="showDeleteContactListConfirm()">למחוק את כל המספרים</button>
+      </div>
+    </div>
+  </div>
+</div>

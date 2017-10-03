@@ -1,0 +1,26 @@
+$small: 380px
+$large: 768px
+
+$mainGray: #535456
+$mainLightGray: #e8e8e8
+$mainGold: #968256
+
+@mixin respond-to($media)
+	@if $media == small
+		@media only screen and (max-width: $small)
+			@content
+	@else if $media == medium
+		@media only screen and (min-width: $small + 1) and (max-width: $large - 1)
+			@content
+
+.confirmed
+	background-color: #6edc76 !important
+
+.maybe
+	background-color: #f4c900 !important
+
+.not-coming
+	background-color: #e95862 !important
+
+.not-responded
+	background-color: #6a9cdc !important
